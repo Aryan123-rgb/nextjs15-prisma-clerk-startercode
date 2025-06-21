@@ -1,36 +1,106 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js 15 Starter with Prisma, Clerk & shadcn/ui
 
-## Getting Started
+A modern Next.js 15 starter template featuring:
 
-First, run the development server:
+- 🚀 Next.js 15 with App Router
+- 🔐 Authentication with Clerk
+- 💾 Database with Prisma ORM (PostgreSQL)
+- 🎨 Styling with Tailwind CSS and shadcn/ui
+- 🌓 Dark/Light mode with next-themes
+- 🛡️ Protected routes with middleware
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🚀 Getting Started
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/yourusername/nextjs15-prisma-clerk-startercode.git
+   cd nextjs15-prisma-clerk-startercode
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   # or
+   yarn
+   # or
+   pnpm install
+   ```
+
+3. **Set up environment variables**
+   Create a `.env.local` file in the root directory and add the following:
+
+   ```env
+   # Database
+   DATABASE_URL="postgresql://postgres:yourpassword@localhost:5432/yourdbname"
+
+   # Clerk
+   NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_publishable_key
+   CLERK_SECRET_KEY=your_secret_key
+   
+   # Optional: Custom auth paths
+   NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+   NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+   ```
+
+4. **Set up the database**
+   ```bash
+   npx prisma migrate dev --name init
+   ```
+
+5. **Run the development server**
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   # or
+   pnpm dev
+   ```
+
+   Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## 📁 Project Structure
+
+```
+.
+├── prisma/
+│   └── schema.prisma     # Database schema
+├── src/
+│   ├── app/
+│   │   ├── (auth)/       # Authentication pages
+│   │   ├── (main)/       # Protected routes
+│   │   │   └── dashboard # Dashboard page (protected)
+│   │   ├── layout.tsx    # Root layout
+│   │   └── page.tsx      # Home page
+│   ├── components/       # Reusable components
+│   ├── lib/              # Utility functions
+│   └── middleware.ts     # Authentication middleware
+└── public/               # Static files
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🔧 Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Framework**: [Next.js 15](https://nextjs.org/)
+- **Authentication**: [Clerk](https://clerk.com/)
+- **Database**: [PostgreSQL](https://www.postgresql.org/) + [Prisma](https://www.prisma.io/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/) + [shadcn/ui](https://ui.shadcn.com/)
+- **Theming**: [next-themes](https://github.com/pacocoursey/next-themes)
+- **TypeScript**: For type safety
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🌓 Dark Mode
 
-## Learn More
+This template includes a theme toggle that persists the user's theme preference. The theme can be toggled using the sun/moon icon in the top-right corner.
 
-To learn more about Next.js, take a look at the following resources:
+## 🔒 Authentication
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Protected routes are handled by the middleware, which checks for an active session before allowing access to protected routes. The protected routes are placed in the `(main)` directory.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📝 License
 
-## Deploy on Vercel
+This project is open source and available under the [MIT License](LICENSE).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🙏 Acknowledgments
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Clerk Documentation](https://clerk.com/docs)
+- [Prisma Documentation](https://www.prisma.io/docs)
+- [shadcn/ui Documentation](https://ui.shadcn.com/docs)
