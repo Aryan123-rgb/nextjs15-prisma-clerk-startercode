@@ -44,7 +44,7 @@ A modern Next.js 15 starter template featuring:
 
 4. **Set up the database**
    ```bash
-   npx prisma migrate dev --name init
+   npx prisma db push
    ```
 
 5. **Run the development server**
